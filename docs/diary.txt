@@ -1,0 +1,144 @@
+11/18)
+- First two chapters of "How Linux Works"
+- Basic commands for using the linux shell, printing procs, pipingm redir, etc.
+- Basic linux concepts, processes, perms, special chars, sym links, env, etc.
+- Searching, manipulating, exe-ing files/dirs on the system
+- Linux 
+- Getting back into linux, shaking the rust off
+- Suggests future broad topics of study:
+    - Scheduling
+    - File systems
+    - Devices
+    - Booting
+    - Paritioning device to host linux
+    - Networking
+    - Drivers
+    - Kernel Modules
+    - Memory mapping / IO / Memory handling
+    - kernel modules
+- Future study and projects should, as it seems now, seek to understand and 
+  expose these concepts
+- Tomorrow's Goal = Devices in How Linux Works. Fork linux src. Dig into 
+                    linux devices code
+                    
+ 11/19)
+ - Sysfs
+ - Device files
+ - udev -> still need to look into further
+ - Working with devices reminded me embedded linux at SEAKR
+ - Moreover, the need to modify, examine, build, and deploy linux systens is
+   apparent if one is to contunie down the path of mastering liux
+ - Given prior expierence, decided to go down the embedded linux route, using
+   yocto to build and modify linux and will intially deploy in embedded env
+ - Device Trees
+ - Yocto is a whole can of worms
+ - Got yocto poky downloaded and build base image
+ - found image recipes
+ - build and ran qemu image
+ - Tried to pass through flash drive, failed
+ - Got back into looking at recipes, layers, using bitbake and yocto commands, etc.
+ - Tomorrow's Goal = Still focus on devices and udev and scsi. Find linux source
+                     code in yocto build, pass usb flash drive through in qemu.
+                     Write and build in custom driver for said flash drive.
+                     Start to play with / explore sysfs and udev using this custom driver.
+                     
+11/20)
+- Need to fuck with kernel config
+- Found linux source, build/tmp/work-shared, recipe "S" variable, WORKDIR variable
+- Created layer, image recipe that inherits the poky core image minimal
+- Added kernel module example into image
+- Changed password for root
+- Got slightly discouraged today, walk it off.
+- You are a linux developer, not a green beret, not a helo pilot, not even an infantryman
+- I am a linux developer, I will hone my craft
+
+11/21)
+- Created kernel module that creates a psdueo device driver
+- Loaded module, used udevadm to monitor
+- Used mknod to create a device file associated with the device drievr
+- Moving to the linux kernel dev book as it focuses what I want to focus on
+- Again not very motivated today, need to hone that warrior mind set in
+- I am a linux developer.
+- For rest of today and tomorrow focus on processes, chap 3 in lkd
+
+11/22)
+- Started chapter 3 on kernel process data structs
+- Started digging into a processes memory layout, fork, exec, etc
+- Couple of tasks todo
+    - iterate process tree
+    - peer into processes task_struct
+    - peer into processes stack/memory layout via task_struct
+    - access "current" variable
+    - create some user space processes along with kmods or drivers or something to peer into procs
+    
+11/23)
+- Wrote kmod for iterating proc tree and dumping attributes of task_struct to log
+- Started digging into what some of these task_struct attributes are for
+- How exactly are kernel threads scheduled? Is there an equivalent task struct for it? Are they scheduled??
+    - Kernel threads are just process with mm == NULL
+- Read idlp website about procs
+- Boot loader??
+- Still kinda confused on exactly what resources are "copied" on a fork call. Copy on Write?? That must just be for the exe??
+- created user space app that uses fork and waitpid, pause. 
+- Wondering if procfs exports alot of the task_struct info?
+- Left off wantint to create complimentary kmod to dig into the task struct as the spawn usr app executes
+
+11/24)
+- The procfs interface appears to print everything you could possibly want to know about a procs task_struct
+- finish chap 3 of lkd
+- Todo for tomorrow
+    [x] use clone instead of fork, play with flags
+    [x] add in some allocs, stack allocs, and file opens to spawn
+    [x] use procfs to see what happens
+    [x] change spawn to just one spawned proc
+    - maybe dig more into procfs and sysfs an exposing a uapi??
+    - otherwise i'd say start digging into chap 4 / sched ??
+    [ ] What are name spaces? TID?
+    [x] Copy on write semantics?
+    [ ] look closer into exec and wait
+
+11/25)
+- Added severl mallocs to swap to see where this go in the memory foot print of proc
+- Used procfs to see heap mapped in  memory and see created buffers
+- Child process inherits alloced memory upon fork
+- Changed to one spawned process for ease
+[x] see if you can parse that procfs attr to see phys mappings of mmaped regions
+- much btter feel of COW semantics and fork in general
+[x] what does #define _GNU_SOURCE do, why do i need it for clone??
+    - Just gives access to no POSIX shitskies
+- Got clone instead of fork up and running, CLONE_VM works as suspected
+[x] used heap of parent for stack of child, can they see each other if CLONE_VM is NOT set???
+       - should be corrupted if CLONE_VM is not set cause child puts values on stack?
+       - appears as though child stack wrt parent is corrupted regardless of shared vm
+       - could be that parent itself writes on stack before child process takes over?
+       - Now the only way to figure this out is to simply look at the physical address mappings
+       - If CLONE_VM set all vaddrs map to the same paddr
+       - stack vars are definetly placed on the child_stack
+       - child puts something on stack, if CLONE_VM not set, physical map is seperated
+
+11/26)
+- Cleaned up the child stack questions and _GNU_SOURCE questions
+- Fuck it moving on to scheduler and digging into actual implementation
+[x] Move away from yocto?? Set up env to use build root instead
+[x] Fork the linux kernel
+[x] Migrate code to build root env instead
+[x] Use build root to compile rootfs
+[x] Compile user apps in br
+[x] create a launch script for qemu
+[x] create a gdb launch script
+- wtf are all the options sent to qemu??
+- would it be smart to compile kernel in build root? Probs so it uses cross comp
+- what env variables are their for build root packages?
+- Need a better way to organize this balony
+
+11/27) 
+[] Compile kernel modules in br
+[] Insert user apps and kmods into root fs in br
+[] Need to organize so my source is out of tree
+[x] Build Linux in build root
+[] Use out of tree source for linux
+[] Set up git repo (w/ sub repos)
+[] Add in usr apps and kmods
+[] Fork Build root
+[] Fork Linux kernel
+- Fork buildroot and prune??

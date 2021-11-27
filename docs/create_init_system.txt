@@ -1,0 +1,41 @@
+Constructing Dir)
+- Linux archive pulled from https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.82.tar.xz
+- tar -xf linux-5.10.82.tar.xf to unpack
+- readme, user apps, and kmods to be source controlled
+- Linux source to be source controlled eventually
+- Pull buildroot archive https://buildroot.org/downloads/buildroot-2021.02.7.tar.gz
+- tar -xf buildroot-2021.02.7.tar.gz
+
+Building Linux Kernel)
+- $ make ARCH=x86_64 x86_64_defconfig
+    - Uses default x86_64 config file
+- make ARCH=x86_64 menuconfig
+    - Accesses menuconfig
+    - Added Compile the kernel with debug info
+    - Added Provide GDB scripts for kernel debugging (New)
+- make -j8
+    - build kernel
+    - outputs kernel at arch/x86/boot/bzImage
+    - outputs debug sybol image at vmlinux
+
+Building Rootfs w/ buildroot
+- run make menuconfig
+- selext x86_64 arch
+- select ext4 fs
+- run make
+- rootfs stored in output/images
+
+Adding User Apps to buildroot
+- see package/hello
+- need to add Config.in and <pkg>.mk to package dir
+- Add entry to package/Config.in
+
+Running qemu w/ gdb Debugging
+- open two terminals
+- In run qemu w/
+    - qemu-system-x86_64 -s -S -no-kvm -kernel arch/x86/boot/bzImage -hda /dev/zero -append "root=/dev/zero console=ttyS0 nokaslr" -serial stdio -display none
+- In other run gdb
+    - gdb ./vmlinux
+    - In gdb execute target remote localhost:1234
+    - set break points
+    - continue to run
