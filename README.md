@@ -7,29 +7,29 @@ serve as repo for holding custom linux kernel code, drivers, user apps, etc.
 all with the sole purpose of the author understanding the Linux kernel better.
 
 # Directory Layout
-## archives
+- archives
 Tar balls used as seed of project. Contains lts build root source and intial
 linux source (4.19.218) that serves as the base for out modifications.
 
-## buildroot (not source controlled)
+- buildroot (not source controlled)
 Contains the buildroot build system that will build the rootfs and kernel. This
 is not source controlled as the buildroot system will be treated as a black box.
 The init_dir.sh script will unpack the archived source and modify the required
 files to compile our linux kernel, our user apps, and our kernel modules and
 pack them into the outputed image. 
 
-## docs
+- docs
 Useful documentation on buildroot and linux. Also any documentation associated
 with this project will be here.
 
-## kernel-modules
+- kernel-modules
 Out of tree kernel modules
 
-## linux-4.19.218
+- linux-4.19.218
 Our custom linux source directory
 
-## scripts
+- scripts
 Scripts for initializing the build system, building, and launching
 
-## user-apps
+- user-apps
 User space applications
