@@ -7,17 +7,20 @@ then
     exit
 fi
 
-# expected to be run from project root, check this
-
 # Unpack build root system
-mkdir $BUILDROOT_DIR
-tar -xf $BUILDROOT_TARBALL -C $BUILDROOT_DIR --strip-components=1
+tar -xf $BUILDROOT_TARBALL
+
+# copy over saved buildroot .config
+cp scripts/buildroot.config $BUILDROOT_DIR/.config
+
+# add new menu to packages config
+echo "menu \"Out of Tree Packages\"" >> $BUILDROOT_DIR/package/Config.in
 
 # for each dir in the user-apps dir
 cd user-apps
 for d in * ; do
 
-    echo "Importing Package ${d}"
+    echo "Importing Package ${d} ..."
 
     # Copy user app meta data to the package folder of the build root system
     mkdir "../${BUILDROOT_DIR}/package/${d}"
@@ -34,7 +37,14 @@ for d in * ; do
     fi
 
     # Update the build root .config
-    echo "BR2_PACKAGE_${d^^}=y" >> $BUILDROOT_DIR/.defconfig
+    echo "BR2_PACKAGE_${d^^}=y" >> ../$BUILDROOT_DIR/.config
     echo ""
+
+    # update packages config.in
+    echo "    source package/${d}/Config.in" >> ../$BUILDROOT_DIR/package/Config.in
 done
 cd ..
+
+echo "endmenu" >> $BUILDROOT_DIR/package/Config.in
+
+echo "Done"

@@ -1,4 +1,0 @@
-config BR2_PACKAGE_PADDR-PARSER
-    bool "paddr-parser"
-    help
-     Physical Adrress parser using procfs

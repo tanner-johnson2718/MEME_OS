@@ -141,3 +141,4 @@
 [x] Add in usr apps and kmods
 [x] Fork Build root
 [x] Fork Linux kernel
+- keeps overwriting .config, maybe need to source Config.in

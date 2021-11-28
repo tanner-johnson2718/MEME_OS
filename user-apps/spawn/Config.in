@@ -1,0 +1,4 @@
+config BR2_PACKAGE_SPAWN
+    bool "spawn"
+    help
+     use clone to spanw new proc 
