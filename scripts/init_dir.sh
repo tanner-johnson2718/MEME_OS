@@ -1,5 +1,5 @@
 # Check that env_init is sourced
-if [ -z "$ENV_INIT"]
+if [ -z "$ENV_INIT" ]
 then
     echo ""
     echo "Please source env_init.sh"
@@ -10,13 +10,31 @@ fi
 # expected to be run from project root, check this
 
 # Unpack build root system
-tar -xf archives/buildroot-2021.02.7.tar.gz
+mkdir $BUILDROOT_DIR
+tar -xf $BUILDROOT_TARBALL -C $BUILDROOT_DIR --strip-components=1
 
 # for each dir in the user-apps dir
-# Copy user app meta data to the package folder of the build root system
-mkdir $BUILDROOT_DIR/packages/hello
+cd user-apps
+for d in * ; do
 
+    echo "Importing Package ${d}"
 
-# Update the buildroot menuconfig
+    # Copy user app meta data to the package folder of the build root system
+    mkdir "../${BUILDROOT_DIR}/package/${d}"
+    if [ -f "${d}/Config.in" ]; then
+        cp "${d}/Config.in"  "../${BUILDROOT_DIR}/package/${d}/Config.in"
+    else
+        echo "${d}/Config.in"
+    fi
 
-# Update the build root .config
+    if [ -f "${d}/${d}.mk" ]; then
+        cp "${d}/${d}.mk"  "../${BUILDROOT_DIR}/package/${d}/${d}.mk"
+    else
+        echo "Cannot find ${d}/${d}.mk"
+    fi
+
+    # Update the build root .config
+    echo "BR2_PACKAGE_${d}=y" >> $BUILDROOT_DIR/.config
+    echo ""
+done
+cd ..

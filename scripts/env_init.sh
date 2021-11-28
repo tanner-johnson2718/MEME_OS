@@ -8,10 +8,12 @@ if [[ ${script_name} = ${this_script} ]] ; then
     exit 
 fi 
 
-BUILDROOT_DIR="./buildroot-2021.02.7"
-KERNEL_IMG="${BUILDROOT_DIR}/output/images/bzImage"
-ROOTFS="${BUILDROOT_DIR}/output/images/rootfs.ext2"
-KERNEL_DEBUG_IMG="${BUILDROOT_DIR}/output/build/linux-5.10.77"
-GDB_CMD="./gdb_cmds.txt"
+# Directory Variables
+export BUILDROOT_DIR="buildroot"
+export BUILDROOT_TARBALL="archives/buildroot-2021.02.7.tar.gz"
+export KERNEL_IMG="${BUILDROOT_DIR}/output/images/bzImage"
+export ROOTFS="${BUILDROOT_DIR}/output/images/rootfs.ext2"
+export KERNEL_DEBUG_IMG="${BUILDROOT_DIR}/output/build/linux-4.19.128"
+export GDB_CMD="scripts/gdb_cmds.txt"
 
-ENV_INIT="true"
+export ENV_INIT="true"
