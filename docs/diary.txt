@@ -141,4 +141,11 @@
 [x] Add in usr apps and kmods
 [x] Fork Build root
 [x] Fork Linux kernel
-- keeps overwriting .config, maybe need to source Config.in
+- For Later:
+    - archive off dl folder and make sure build root skips the fetch stage
+    - maybe clean up how buildroot's .config is modified?
+    - maybe clean up the Config.in, app.mk, and Makefile "boiler plate" so you
+      don't have the issue of the exe name / package name randomly sprinkled
+      throughout these files
+    - maybe have scripts for opening menuconfig buildroot and linux and saves
+      it off

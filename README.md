@@ -8,8 +8,8 @@ all with the sole purpose of the author understanding the Linux kernel better.
 
 # Directory Layout
 - *archives*
-Tar balls used as seed of project. Contains lts build root source and intial
-linux source (4.19.218) that serves as the base for out modifications.
+Tar balls used as seed of project. Contains build root source and intial linux 
+source (4.19.218) that serves as the base for out modifications.
 
 - *buildroot* (not source controlled)
 Contains the buildroot build system that will build the rootfs and kernel. This
