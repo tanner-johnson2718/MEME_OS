@@ -134,11 +134,10 @@
 11/27) 
 [] Compile kernel modules in br
 [] Insert user apps and kmods into root fs in br
-[] Need to organize so my source is out of tree
+[x] Need to organize so my source is out of tree
 [x] Build Linux in build root
 [] Use out of tree source for linux
-[] Set up git repo (w/ sub repos)
-[] Add in usr apps and kmods
-[] Fork Build root
-[] Fork Linux kernel
-- Fork buildroot and prune??
+[x] Set up git repo (w/ sub repos)
+[x] Add in usr apps and kmods
+[x] Fork Build root
+[x] Fork Linux kernel

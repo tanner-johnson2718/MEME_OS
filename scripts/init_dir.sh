@@ -34,7 +34,7 @@ for d in * ; do
     fi
 
     # Update the build root .config
-    echo "BR2_PACKAGE_${d}=y" >> $BUILDROOT_DIR/.config
+    echo "BR2_PACKAGE_${d^^}=y" >> $BUILDROOT_DIR/.defconfig
     echo ""
 done
 cd ..
