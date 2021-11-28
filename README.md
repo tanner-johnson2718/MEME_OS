@@ -35,9 +35,10 @@ Scripts for initializing the build system, building, and launching
 User space applications. Each application gets a directory here with a flat dir
 structure i.e. no placing several user apps in a sub folder here. Every app 
 needs to adhere to the following structure:
--- user-apps
---- app_name
----- Config.in
----- app_name.mk
----- src
------ Makefile
+* user-apps
+** app_name
+*** Config.in
+*** app_name.mk
+*** src
+**** Makefile
+**** application source code
