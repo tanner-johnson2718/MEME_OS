@@ -42,3 +42,8 @@ needs to adhere to the following structure:
       - src
         - Makefile
         - application source code
+
+For more info on the Config.in and .mk file see the buildroot slised in docs.
+Or take a look at the hello example. As a final note the meta data (Config.in 
+and .mk) are copied into the buildroot dir and the meta data itself should
+point to the source contained in src.

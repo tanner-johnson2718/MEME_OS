@@ -1,5 +1,5 @@
 HELLO_VERSION:= 1.0.0
-HELLO_SITE:= $(TOPDIR)/package/hello/src
+HELLO_SITE:= $(TOPDIR)/../user-apps/hello/src
 HELLO_SITE_METHOD:=local
 HELLO_INSTALL_TARGET:=YES
 

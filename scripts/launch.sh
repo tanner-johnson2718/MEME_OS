@@ -1,8 +1,11 @@
-BUILDROOT_DIR="./buildroot-2021.02.7"
-KERNEL_IMG="${BUILDROOT_DIR}/output/images/bzImage"
-ROOTFS="${BUILDROOT_DIR}/output/images/rootfs.ext2"
-KERNEL_DEBUG_IMG="${BUILDROOT_DIR}/output/build/linux-5.10.77"
-GDB_CMD="./gdb_cmds.txt"
+# Check that env_init is sourced
+if [ -z "$ENV_INIT"]
+then
+    echo ""
+    echo "Please source env_init.sh"
+    echo ""
+    exit
+fi
 
 gnome-terminal -- gdb $KERNEL_DEBUG_IMG -x $GDB_CMD 
 
