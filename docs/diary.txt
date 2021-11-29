@@ -148,9 +148,10 @@
       it off
 
 11/28)
-[] Use out of tree source for linux
+[x] Use out of tree source for linux
 [] Compile kernel modules in br
 [] Insert user apps and kmods into root fs in br
+[] Custom .config
 - Really need to go in and handle these "magic strings"
    - Package names and exe names of user space apps
    - buildroot.config
