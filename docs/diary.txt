@@ -132,11 +132,8 @@
 - Need a better way to organize this balony
 
 11/27) 
-[] Compile kernel modules in br
-[] Insert user apps and kmods into root fs in br
 [x] Need to organize so my source is out of tree
 [x] Build Linux in build root
-[] Use out of tree source for linux
 [x] Set up git repo (w/ sub repos)
 [x] Add in usr apps and kmods
 [x] Fork Build root
@@ -149,3 +146,14 @@
       throughout these files
     - maybe have scripts for opening menuconfig buildroot and linux and saves
       it off
+
+11/28)
+[] Use out of tree source for linux
+[] Compile kernel modules in br
+[] Insert user apps and kmods into root fs in br
+- Really need to go in and handle these "magic strings"
+   - Package names and exe names of user space apps
+   - buildroot.config
+   - linux source location and dir name
+   - linux tar ball name and final locale in build root dl folder
+- Speed up build by archiving off downloads?

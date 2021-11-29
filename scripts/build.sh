@@ -36,10 +36,6 @@ for d in * ; do
         echo "Cannot find ${d}/${d}.mk"
     fi
 
-    # Update the build root .config
-    echo "BR2_PACKAGE_${d^^}=y" >> ../$BUILDROOT_DIR/.config
-    echo ""
-
     # update packages config.in
     echo "    source package/${d}/Config.in" >> ../$BUILDROOT_DIR/package/Config.in
 done
@@ -48,3 +44,12 @@ cd ..
 echo "endmenu" >> $BUILDROOT_DIR/package/Config.in
 
 echo "Done"
+
+# Tar up the linux source and place it in the dl folder for buildroot to find it
+tar -czvf linux-4.19.218.tar.gz -C linux-4.19.218 .
+mkdir $BUILDROOT_DIR/dl
+mv linux-4.19.218.tar.gz ${BUILDROOT_DIR}/dl/linux-4.19.218.tar.gz
+
+# Finally move into the buildroot dir and call make
+cd $BUILDROOT_DIR
+make

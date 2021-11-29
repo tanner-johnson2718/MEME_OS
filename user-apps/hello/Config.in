@@ -1,4 +1,5 @@
 config BR2_PACKAGE_HELLO
     bool "hello"
+    default y
     help
      Simple example hello world user application
