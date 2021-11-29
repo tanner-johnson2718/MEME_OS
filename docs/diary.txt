@@ -151,10 +151,21 @@
 [x] Use out of tree source for linux
 [] Compile kernel modules in br
 [] Insert user apps and kmods into root fs in br
-[] Custom .config
+[x] Custom .config
 - Really need to go in and handle these "magic strings"
    - Package names and exe names of user space apps
    - buildroot.config
    - linux source location and dir name
    - linux tar ball name and final locale in build root dl folder
 - Speed up build by archiving off downloads?
+- Tomorrow start focusing on actual linux kernel hacking
+- Basic infastructure to do ^^ is now on place
+
+11/29)
+[x] Script for recompiling linux
+[] Should also configure port that gdb / image uses for debug
+[] Magic strings issue see 11/28
+  [] Package names and exe names of user space apps
+  [] buildroot.config
+  [] linux source location and dir name
+  [] linux tar ball name and final locale in build root dl folder
