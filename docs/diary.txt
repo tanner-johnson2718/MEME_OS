@@ -163,9 +163,12 @@
 
 11/29)
 [x] Script for recompiling linux
-[] Should also configure port that gdb / image uses for debug
-[] Magic strings issue see 11/28
-  [] Package names and exe names of user space apps
-  [] buildroot.config
-  [] linux source location and dir name
-  [] linux tar ball name and final locale in build root dl folder
+- fuck didnt do much today
+
+11/30)
+[] RB trees
+[x] rq run queue? Where defined -> in kernel/sched/sched.h. It is is the main
+    per cpu run queue
+[x] Read  CFS doc
+[] cgroups?
+--- Fuck Linux, I'd rather write my own shit
