@@ -1,10 +1,10 @@
 # MEME OS
 Welcome to MEME OS, the only linux based operating system dedicated strictly
-to the lolz. The goal of this project is to 1) set up the infastructure for 
+to the lolz. The goal of this project is to set up the infastructure for 
 rapidly building, deploying, and debuging minimal (modified) linux images that
-target the qemu x86_64 emulator (ideally on a local ubuntu box). And 2) to 
-serve as repo for holding custom linux kernel code, drivers, user apps, etc. 
-all with the sole purpose of the author understanding the Linux kernel better.
+target the qemu x86_64 emulator initially and hopefully other arch. with
+minimal modifications. The intent is to have this minimal infastructure ready
+to go so if one needs to debug kernel modifications its ready to go.
 
 # Directory Layout
 - *archives*
