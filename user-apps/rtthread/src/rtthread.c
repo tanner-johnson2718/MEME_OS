@@ -104,7 +104,7 @@ void *counterThread(void *threadp)
         sum += i;
     }
     
-    syslog(LOG_CRIT,"Thread idx=%d, sum[1...%d]=%d, Running on core : %d\n", 
+    printf("Thread idx=%d, sum[1...%d]=%d, Running on core : %d\n", 
            idx, idx, sum, sched_getcpu());
 }
 
