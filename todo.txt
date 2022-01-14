@@ -1,0 +1,1 @@
+script to add user app ti already compiled linux
