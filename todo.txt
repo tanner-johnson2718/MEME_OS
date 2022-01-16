@@ -1,2 +1,3 @@
 script to add user app ti already compiled linux
 achive off tool chain
+kernelmods
