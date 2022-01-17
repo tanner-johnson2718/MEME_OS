@@ -1,3 +1,6 @@
-script to add user app ti already compiled linux
+script to add user app to already compiled linux
+script to rebuild already built in user app
 achive off tool chain
 kernelmods
+Make your own scheduler / modify the existing linux one
+Would be nice to like slim down the kernel some how
