@@ -1,0 +1,5 @@
+config BR2_PACKAGE_RTTHREAD
+    bool "RTTHREAD"
+    default y
+    help
+     real time thread boiler plate 

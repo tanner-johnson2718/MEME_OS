@@ -1,3 +1,15 @@
+###############################################################################
+# Build completely from scratch.
+# - unpack build root tar
+# - copy over the buildroot .config
+# - For each dir in user app:
+#    - Copy user app meta data i.e. Config.in and package.mk
+#    - Update packages Config.in
+#    - Finally update .config to add package to build
+# - Tar up out of tree linux and copy to DL folder
+# - Finally call make in buildroot dir
+###############################################################################
+
 # Check that env_init is sourced
 if [ -z "$ENV_INIT" ]
 then
@@ -38,6 +50,9 @@ for d in * ; do
 
     # update packages config.in
     echo "    source package/${d}/Config.in" >> ../$BUILDROOT_DIR/package/Config.in
+
+    # Update .config
+    echo "BR2_PACKAGE_${d^}=y" >> ../$BUILDROOT_DIR/.config
 done
 cd ..
 
