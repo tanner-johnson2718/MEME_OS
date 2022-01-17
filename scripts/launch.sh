@@ -9,6 +9,5 @@ fi
 
 gnome-terminal -- gdb $KERNEL_DEBUG_IMG -x $GDB_CMD 
 
-qemu-system-x86_64 -s -S -no-kvm -kernel $KERNEL_IMG -hda $ROOTFS -append \
-"root=/dev/sda rw console=ttyS0,115200 acpi=off nokaslr" -serial stdio \
--display none -smp 4
+qemu-system-x86_64 -s -S -kernel $KERNEL_IMG -hda $ROOTFS -append \
+"root=/dev/sda rw console=ttyS0,115200 acpi=off nokaslr"  -smp 4
