@@ -62,8 +62,13 @@ echo "Done"
 
 # Tar up the linux source and place it in the dl folder for buildroot to find it
 mkdir $BUILDROOT_DIR/dl
-mv archives/linux-4.19.218.tar.xz ${BUILDROOT_DIR}/dl/linux-4.19.218.tar.xz
+cp archives/linux-4.19.218.tar.xz ${BUILDROOT_DIR}/dl/linux-4.19.218.tar.xz
+
+echo "Build System Expanded"
+read -p 'Build? (y/n): ' build
 
 # Finally move into the buildroot dir and call make
-cd $BUILDROOT_DIR
-make
+if [ "$build" = "y" ]; then
+    cd $BUILDROOT_DIR
+    make
+fi
