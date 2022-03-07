@@ -61,9 +61,8 @@ echo "endmenu" >> $BUILDROOT_DIR/package/Config.in
 echo "Done"
 
 # Tar up the linux source and place it in the dl folder for buildroot to find it
-tar -czf linux-4.19.218.tar.gz -C linux-4.19.218 .
 mkdir $BUILDROOT_DIR/dl
-mv linux-4.19.218.tar.gz ${BUILDROOT_DIR}/dl/linux-4.19.218.tar.gz
+mv archives/linux-4.19.218.tar.xz ${BUILDROOT_DIR}/dl/linux-4.19.218.tar.xz
 
 # Finally move into the buildroot dir and call make
 cd $BUILDROOT_DIR

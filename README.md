@@ -25,9 +25,6 @@ with this project will be here.
 - *kernel-modules*
 Out of tree kernel modules
 
-- *linux-4.19.218*
-Our custom linux source directory
-
 - *scripts*
 Scripts for initializing the build system, building, and launching
 
