@@ -52,7 +52,7 @@ for d in * ; do
     echo "    source package/${d}/Config.in" >> ../$BUILDROOT_DIR/package/Config.in
 
     # Update .config
-    echo "BR2_PACKAGE_${d^}=y" >> ../$BUILDROOT_DIR/.config
+    echo "BR2_PACKAGE_${d^^}=y" >> ../$BUILDROOT_DIR/.config
 done
 cd ..
 
