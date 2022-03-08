@@ -1,3 +1,0 @@
-script to add user app to already compiled linux
-script to rebuild already built in user app
-kernelmods
