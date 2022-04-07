@@ -4,7 +4,8 @@ to the lolz. The goal of this project is to set up the infastructure for
 rapidly building, deploying, and debuging minimal (modified) linux images that
 target the qemu x86_64 emulator using the buildroot build system. Will use 
 kernel modules and user apps to modthe output image, will not mod actual kernel
-source. The goal is to have the following:
+source (for now, have documentation to aid in this for future dev). The goal is
+to have the following:
 
 - [X] Archived buildroot build system and linux source
 - [X] Set of out of tree user apps that are "compiled" into image
