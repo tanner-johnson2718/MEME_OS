@@ -18,7 +18,8 @@ include but are not limited too:
 - [ ] Set of scripts to iterativly build kernel modules without rebuilding 
       entire tool chain and kernel
 - [X] Script to rebuild kernel only
-- [X] Saved out of tree linux and buildroot .config
+- [X] Saved out of tree buildroot .config
+- [ ] Saved out of tree linux .config
 
 # Directory Layout
 - *archives*
