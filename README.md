@@ -19,7 +19,7 @@ include but are not limited too:
       entire tool chain and kernel
 - [X] Script to rebuild kernel only
 - [X] Saved out of tree buildroot .config
-- [ ] Saved out of tree linux .config
+- [X] Saved out of tree linux .config
 
 # Directory Layout
 - *archives*
