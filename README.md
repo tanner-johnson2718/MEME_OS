@@ -10,7 +10,7 @@ not limited too:
 
 - [X] Archived buildroot build system and linux source
 - [X] Set of out of tree user apps that are "compiled" into image
-- [ ] Set of out of tree kernel mods that are "compiled" into image
+- [X] Set of out of tree kernel mods that are "compiled" into image
 - [X] Script to create boiler plate for new user apps
 - [ ] Script to create boiler plate for new kernel modules
 - [X] Set of scripts to build and clean from scratch

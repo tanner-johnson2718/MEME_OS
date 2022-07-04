@@ -56,6 +56,34 @@ for d in * ; do
 done
 cd ..
 
+# for each dir in the kernel-mod dir
+cd kernel-modules
+for d in * ; do
+
+    echo "Importing Package (Kernel Mod) ${d} ..."
+
+    # Copy user app meta data to the package folder of the build root system
+    mkdir "../${BUILDROOT_DIR}/package/${d}"
+    if [ -f "${d}/Config.in" ]; then
+        cp "${d}/Config.in"  "../${BUILDROOT_DIR}/package/${d}/Config.in"
+    else
+        echo "Cannot find ${d}/Config.in"
+    fi
+
+    if [ -f "${d}/${d}.mk" ]; then
+        cp "${d}/${d}.mk"  "../${BUILDROOT_DIR}/package/${d}/${d}.mk"
+    else
+        echo "Cannot find ${d}/${d}.mk"
+    fi
+
+    # update packages config.in
+    echo "    source package/${d}/Config.in" >> ../$BUILDROOT_DIR/package/Config.in
+
+    # Update .config
+    echo "BR2_PACKAGE_${d^^}=y" >> ../$BUILDROOT_DIR/.config
+done
+cd ..
+
 echo "endmenu" >> $BUILDROOT_DIR/package/Config.in
 
 echo "Done"
