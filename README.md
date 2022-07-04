@@ -12,11 +12,11 @@ not limited too:
 - [X] Set of out of tree user apps that are "compiled" into image
 - [X] Set of out of tree kernel mods that are "compiled" into image
 - [X] Script to create boiler plate for new user apps
-- [ ] Script to create boiler plate for new kernel modules
+- [X] Script to create boiler plate for new kernel modules
 - [X] Set of scripts to build and clean from scratch
 - [X] Set of scripts to iterativly build apps without rebuilding entire tool 
       chain and kernel
-- [ ] Set of scripts to iterativly build kernel modules without rebuilding 
+- [X] Set of scripts to iterativly build kernel modules without rebuilding 
       entire tool chain and kernel
 - [X] Script to rebuild kernel only
 - [X] Saved out of tree buildroot .config
