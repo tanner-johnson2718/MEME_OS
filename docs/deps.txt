@@ -18,3 +18,5 @@ rsync
 file
 bc
 wget
+libssl-dev
+libncurses-dev

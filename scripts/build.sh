@@ -39,7 +39,7 @@ for d in * ; do
     if [ -f "${d}/Config.in" ]; then
         cp "${d}/Config.in"  "../${BUILDROOT_DIR}/package/${d}/Config.in"
     else
-        echo "${d}/Config.in"
+        echo "Cannot find ${d}/Config.in"
     fi
 
     if [ -f "${d}/${d}.mk" ]; then

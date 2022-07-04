@@ -3,9 +3,10 @@ Welcome to MEME OS, the only linux based operating system dedicated strictly
 to the lolz. The goal of this project is to set up the infastructure for 
 rapidly building, deploying, and debuging minimal (modified) linux images that
 target the qemu x86_64 emulator using the buildroot build system. The purpose
-is to have a sandbox for building linux systems and a starting point for 
-future linux builds that actaully target real hardware. Project milestones
-include but are not limited too:
+is to have a sandbox for building linux systems where one can modify and debug 
+the linux kernel. This project will also be a starting point for future linux 
+builds that actaully target real hardware. Project milestones include but are
+not limited too:
 
 - [X] Archived buildroot build system and linux source
 - [X] Set of out of tree user apps that are "compiled" into image
@@ -20,6 +21,7 @@ include but are not limited too:
 - [X] Script to rebuild kernel only
 - [X] Saved out of tree buildroot .config
 - [X] Saved out of tree linux .config
+- [X] GDB attached to kernel execution
 
 # Directory Layout
 - *archives*

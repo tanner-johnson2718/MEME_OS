@@ -1,0 +1,6 @@
+config BR2_PACKAGE_HELLOMOD
+    bool "hellomod"
+    depends on BR2_LINUX_KERNEL
+    default y
+    help
+     No help for you
