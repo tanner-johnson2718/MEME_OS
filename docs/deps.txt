@@ -20,3 +20,5 @@ bc
 wget
 libssl-dev
 libncurses-dev
+qemu
+qemu-system-x86

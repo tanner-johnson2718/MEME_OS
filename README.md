@@ -23,6 +23,18 @@ not limited too:
 - [X] Saved out of tree linux .config
 - [X] GDB attached to kernel execution
 
+# Build and Execute
+
+* `source ./scripts/env_init.sh`
+* `./scripts/build`
+  * `y`
+* `./scipts/launch.sh`
+
+# Creating a User Space Application
+
+* 
+
+
 # Directory Layout
 - *archives*
 Tar balls used as seed of project. Contains build root source and intial linux 
@@ -43,7 +55,7 @@ with this project will be here.
 Out of tree kernel modules
 
 - *scripts*
-Scripts for initializing the build system, building, and launching
+Scripts for initializing the build system, building, and launching. Also contains buildroot and linux .config files.
 
 - *user-apps*
 User space applications. Each application gets a directory here with a flat dir
