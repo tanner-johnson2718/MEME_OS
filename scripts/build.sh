@@ -18,6 +18,12 @@ then
     exit
 fi
 
+if [ $PWD != $BASE_DIR ] ;
+then
+    echo "Please run from ${BASE_DIR}"
+    exit
+fi
+
 # copy over saved buildroot .config adn package tree to ensure that as we mod
 # it, we start from the same starting point. 
 cp $BUILDROOT_CONFIG_CLEAN_COPY     $BUILDROOT_CONFIG_DEST
@@ -93,4 +99,5 @@ read -p 'Build? (y/n): ' build
 if [ "$build" = "y" ]; then
     cd $BUILDROOT_DIR
     make
+    cd $BASE_DIR
 fi

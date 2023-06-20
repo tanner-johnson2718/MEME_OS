@@ -7,5 +7,15 @@ then
     exit
 fi
 
-# remove build dir
-rm -rf $BUILDROOT_DIR
+if [ $PWD != $BASE_DIR ] ;
+then
+    echo "Please run from ${BASE_DIR}"
+    exit
+fi
+
+read -p 'Complete Buildroot Clean? (y/n): ' clean
+if [ "$clean" = "y" ]; then
+    cd $BUILDROOT_DIR
+    make clean
+    cd cd $BASE_DIR
+fi

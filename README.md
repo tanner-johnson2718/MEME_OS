@@ -9,10 +9,10 @@ builds that actaully target real hardware. Project milestones include but are
 not limited too:
 
 - [X] Set of out of tree user apps that are "compiled" into image
-- [-] Set of out of tree kernel mods that are "compiled" into image
+- [X] Set of out of tree kernel mods that are "compiled" into image
 - [X] Script to create boiler plate for new user apps
-- [-] Script to create boiler plate for new kernel modules
-- [ ] Set of scripts to build and clean from scratch
+- [X] Script to create boiler plate for new kernel modules
+- [X] Set of scripts to build and clean from scratch
 - [-] Set of scripts to iterativly build apps without rebuilding entire tool 
       chain and kernel
 - [ ] Set of scripts to iterativly build kernel modules without rebuilding 
@@ -44,17 +44,24 @@ BR2_TARGET_ROOTFS_EXT2_4=y
 
 Recommend to use `make menuconfig` to set these values as there are several sub params that will be automatically set if on uses the `menucofig`. The above values can be searched in the buildroot menuconfig. Once buildroot is configured to your liking, Save off `.config` and the `package/Config.in` files into the scripts directory. Save buildroot `.config` as `buildroot.config`.
 
-# Build and Execute
-
+# Build, Execute, Clean, and Rebuild
 * `source ./scripts/env_init.sh`
   * The source script exports several important variables that will be used by other scripts
   * It also sets and checks that you are in the base dir of the git repo
-* `./scripts/build`, then y to build 
-  * 
+* `./scripts/build`, then `y` to build
+  * The build script copies the meta-data from our out of tree user apps and kernel modules into the build root dir
+  * It also copies the buildroot, linux, and package tree configs and modifies them such that our out of tree packages are built, visable to the buildroot menuconfig, and included in the rootfs of the output.
+  * After all this it simply executes make in the buildroot dir.
 * `./scipts/launch.sh`
+  * Spin up a qemu environ to run the output image and a termial running gdb attached to the kernel.
+* `./scripts/clean.sh`
+  * This will cd into buildroot dir and simply call a project wide make clean
+* `./scripts/
 
 # Creating a User Space Application
-* 
+**TODO**
+
+# Creating Kernel Modules
 
 
 # Directory Layout

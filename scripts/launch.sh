@@ -7,6 +7,13 @@ then
     exit
 fi
 
+if [ $PWD != $BASE_DIR ] ;
+then
+    echo "Please run from ${BASE_DIR}"
+    exit
+fi
+
+
 gnome-terminal -- gdb $KERNEL_DEBUG_IMG -x $GDB_CMD 
 
 qemu-system-x86_64 -s -S -kernel $KERNEL_IMG -hda $ROOTFS -append \
