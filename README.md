@@ -13,14 +13,14 @@ not limited too:
 - [X] Script to create boiler plate for new user apps
 - [X] Script to create boiler plate for new kernel modules
 - [X] Set of scripts to build and clean from scratch
-- [-] Set of scripts to iterativly build apps without rebuilding entire tool 
+- [X] Set of scripts to iterativly build apps without rebuilding entire tool 
       chain and kernel
-- [ ] Set of scripts to iterativly build kernel modules without rebuilding 
+- [X] Set of scripts to iterativly build kernel modules without rebuilding 
       entire tool chain and kernel
-- [-] Script to rebuild kernel only
-- [-] Saved out of tree buildroot .config
-- [-] Saved out of tree linux .config
-- [-] GDB attached to kernel execution
+- [X] Script to rebuild kernel only
+- [X] Saved out of tree buildroot .config
+- [X] Saved out of tree linux .config
+- [X] GDB attached to kernel execution
 
 # System Set Up
 * Clone this repo
@@ -56,13 +56,22 @@ Recommend to use `make menuconfig` to set these values as there are several sub 
   * Spin up a qemu environ to run the output image and a termial running gdb attached to the kernel.
 * `./scripts/clean.sh`
   * This will cd into buildroot dir and simply call a project wide make clean
-* `./scripts/
+* `./scripts/rebuild_linux.sh`
+  * 
 
 # Creating a User Space Application
-**TODO**
+* See [hello](./user-apps/hello/) as an example of how to structure a user app to be built in
+* Keep all user apps flat in the user app dir i.e. no apps within an app. Unless you want to move it into buildroot system by hand
+* Use `./scipts/create_empty_app.sh` to create a blank template
+* Use `./scripts/rebuild_app.sh` to rebuilt the app and the rootfs with the updated app in it. 
+* User apps are placed in ???
 
 # Creating Kernel Modules
-
+* See [hellomod](./kernel-modules/hellomod/) as an example of how to structure a kernel module to be built in
+* Keep all kernel modules flat in the kernel modules dir i.e. no mods within a mod. Unless you want to move it into buildroot system by hand
+* Use `./scipts/create_empty_kmod.sh` to create a blank template
+* Use `./scripts/rebuild_app.sh` to rebuilt the module and the rootfs with the updated mod in it. (Same script as in user space app).
+* Kernel modules are placed in ?????
 
 # Directory Layout
 - *buildroot* (not source controlled)

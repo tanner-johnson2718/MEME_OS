@@ -11,6 +11,12 @@ if [ $# != 1 ]; then
     echo "error usage ./rebuild_app <app>"
 fi
 
+if [ $PWD != $BASE_DIR ] ;
+then
+    echo "Please run from ${BASE_DIR}"
+    exit
+fi
+
 # delete indicated apps source and rootfs
 rm -r ${BUILDROOT_DIR}/output/build/$1-*
 rm -r ${ROOTFS}

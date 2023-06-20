@@ -13,3 +13,10 @@ then
     exit
 fi
 
+# delete linux-custom sub directory and output image
+rm -f $KERNEL_IMG
+rm -rf $BUILDROOT_DIR/output/build/linux-*
+
+# Finally move into the buildroot dir and call make
+cd $BUILDROOT_DIR
+make
