@@ -10,7 +10,7 @@ not limited too:
 
 - [X] Set of out of tree user apps that are "compiled" into image
 - [-] Set of out of tree kernel mods that are "compiled" into image
-- [-] Script to create boiler plate for new user apps
+- [X] Script to create boiler plate for new user apps
 - [-] Script to create boiler plate for new kernel modules
 - [ ] Set of scripts to build and clean from scratch
 - [-] Set of scripts to iterativly build apps without rebuilding entire tool 
@@ -29,21 +29,28 @@ not limited too:
 
 # Buildroot and Linux Menuconfig
 
-The menuconfig system is used to configure both linux and the buildroot system. The [buildroot user man](./docs/build_root_manual.pdf) has some good info on how to configure buildroot. It is accessed via `make menuconfig` from inside the buildroot dir. The linux menuconfig can be accessed with the command `make linux-menuconfig`. This will export the cofigured linux .config to the location you specify. From there, append the buildroot config file with:
+The menuconfig system is used to configure both linux and the buildroot system. The [buildroot user man](./docs/build_root_manual.pdf) has some good info on how to configure buildroot. It is accessed via `make menuconfig` from inside the buildroot dir. The linux menuconfig can be accessed with the command `make linux-menuconfig`. This will export the cofigured linux .config to the location you specify. Save off this linux config into `scripts/.config`.
+
+Further more in buildroot be sure to export the rootFS as an ext4 filesystem, build the kernel with debug symbols, and point the system to use our custom linux .config.
 
 ```
 BR2_LINUX_KERNEL_USE_CUSTOM_CONFIG=y
 BR2_LINUX_KERNEL_CUSTOM_CONFIG_FILE="$(TOPDIR)/../scripts/.config"  #Path to linux config
+BR2_ENABLE_DEBUG=y
+BR2_ENABLE_RUNTIME_DEBUG=y
+BR2_TARGET_ROOTFS_EXT2=y 
+BR2_TARGET_ROOTFS_EXT2_4=y
 ```
 
-Further more in buildroot be sure to export the rootFS as an ext4 filesystem and 
-
+Recommend to use `make menuconfig` to set these values as there are several sub params that will be automatically set if on uses the `menucofig`. The above values can be searched in the buildroot menuconfig. Once buildroot is configured to your liking, Save off `.config` and the `package/Config.in` files into the scripts directory. Save buildroot `.config` as `buildroot.config`.
 
 # Build and Execute
 
 * `source ./scripts/env_init.sh`
-* `./scripts/build`
-  * `y`
+  * The source script exports several important variables that will be used by other scripts
+  * It also sets and checks that you are in the base dir of the git repo
+* `./scripts/build`, then y to build 
+  * 
 * `./scipts/launch.sh`
 
 # Creating a User Space Application

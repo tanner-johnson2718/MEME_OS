@@ -1,12 +1,11 @@
 ###############################################################################
 # Build completely from scratch.
-# - unpack build root tar
-# - copy over the buildroot .config
+# - copy over the buildroot .config and Config.in
 # - For each dir in user app:
 #    - Copy user app meta data i.e. Config.in and package.mk
 #    - Update packages Config.in
 #    - Finally update .config to add package to build
-# - Tar up out of tree linux and copy to DL folder
+# - Do same thing for k-mods
 # - Finally call make in buildroot dir
 ###############################################################################
 
@@ -19,11 +18,13 @@ then
     exit
 fi
 
-# copy over saved buildroot .config
-cp scripts/buildroot.config $BUILDROOT_DIR/.config
+# copy over saved buildroot .config adn package tree to ensure that as we mod
+# it, we start from the same starting point. 
+cp $BUILDROOT_CONFIG_CLEAN_COPY     $BUILDROOT_CONFIG_DEST
+cp $BUILDROOT_PKG_TREE_CLEAN_COPY   $BUILDROOT_PKG_TREE_DEST
 
 # add new menu to packages config
-echo "menu \"Out of Tree Packages\"" >> $BUILDROOT_DIR/package/Config.in
+echo "menu \"Out of Tree Packages\"" >> $BUILDROOT_PKG_TREE_DEST
 
 # for each dir in the user-apps dir
 cd user-apps
@@ -46,10 +47,10 @@ for d in * ; do
     fi
 
     # update packages config.in
-    echo "    source package/${d}/Config.in" >> ../$BUILDROOT_DIR/package/Config.in
+    echo "    source package/${d}/Config.in" >> ../$BUILDROOT_PKG_TREE_DEST
 
     # Update .config
-    echo "BR2_PACKAGE_${d^^}=y" >> ../$BUILDROOT_DIR/.config
+    echo "BR2_PACKAGE_${d^^}=y" >> ../$BUILDROOT_CONFIG_DEST
 done
 cd ..
 
@@ -74,14 +75,14 @@ for d in * ; do
     fi
 
     # update packages config.in
-    echo "    source package/${d}/Config.in" >> ../$BUILDROOT_DIR/package/Config.in
+    echo "    source package/${d}/Config.in" >> ../$BUILDROOT_PKG_TREE_DEST
 
     # Update .config
-    echo "BR2_PACKAGE_${d^^}=y" >> ../$BUILDROOT_DIR/.config
+    echo "BR2_PACKAGE_${d^^}=y" >> ../$BUILDROOT_CONFIG_DEST
 done
 cd ..
 
-echo "endmenu" >> $BUILDROOT_DIR/package/Config.in
+echo "endmenu" >> $BUILDROOT_PKG_TREE_DEST
 
 echo "Done"
 

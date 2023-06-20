@@ -11,7 +11,7 @@ if [ $# != 1 ]; then
     echo "error usage ./create_empty_app.sh <app>"
 fi
 
-PATH = user-apps/$1
+PATH = kernel-modules/$1
 
 mkdir ${PATH}
 mkdir ${PATH}/src
@@ -31,7 +31,3 @@ echo "${1^^}_SITE_METHOD:=local" >> ${PATH}/$1.mk
 echo "" >> ${PATH}/$1.mk
 echo "\$(eval \$(kernel-module))" >> ${PATH}/$1.mk
 echo "\$(eval \$(generic-package))" >> ${PATH}/$1.mk
-
-rm ${BUILDROOT_DIR}/.config
-echo "Type n in 1 sec"
-./scripts/build.sh &> /dev/null
