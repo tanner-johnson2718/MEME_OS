@@ -22,4 +22,5 @@ gnome-terminal -- gdb $KERNEL_DEBUG_IMG -x $GDB_CMD
                     -append "rootwait root=/dev/vda console=tty1 console=ttyS0" \
                     -serial stdio -net nic,model=virtio \
                     -net user \
-                    -smp 2
+                    -smp 2 \
+                    -append nokaslr \
