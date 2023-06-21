@@ -16,5 +16,10 @@ fi
 
 gnome-terminal -- gdb $KERNEL_DEBUG_IMG -x $GDB_CMD 
 
-qemu-system-x86_64 -s -S -kernel $KERNEL_IMG -hda $ROOTFS -append \
-"root=/dev/sda rw console=ttyS0,115200 acpi=off nokaslr"  -smp 4
+
+ qemu-system-x86_64 -s -S -M pc -kernel $KERNEL_IMG \
+                    -drive file=$ROOTFS,if=virtio,format=raw \
+                    -append "rootwait root=/dev/vda console=tty1 console=ttyS0" \
+                    -serial stdio -net nic,model=virtio \
+                    -net user \
+                    -smp 2

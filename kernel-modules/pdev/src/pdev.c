@@ -9,7 +9,6 @@ MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION("quantum cat device");
 MODULE_AUTHOR("dcat");
 MODULE_VERSION("0.1");
-MODULE_SUPPORTED_DEVICE("cat");
 
 static ssize_t dev_read(struct file *, char *, size_t, loff_t *);
 static int     dev_open(struct inode *, struct file *);

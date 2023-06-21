@@ -26,8 +26,8 @@ rm -rf ${BUILDROOT_DIR}/package/$1
 
 # copy meta data
 mkdir ${BUILDROOT_DIR}/package/$1mkdir "../${BUILDROOT_DIR}/package/${d}"
-cp user-apps/$1/Config.in  ${BUILDROOT_DIR}/package/$1/Config.in
-cp user-apps/$1/$1.mk  ${BUILDROOT_DIR}/package/$1/$1.mk
+cp kernel-modules/$1/Config.in  ${BUILDROOT_DIR}/package/$1/Config.in
+cp kernel-modules/$1/$1.mk  ${BUILDROOT_DIR}/package/$1/$1.mk
 
 #rebuild
 cd ${BUILDROOT_DIR}

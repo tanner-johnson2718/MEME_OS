@@ -1,3 +1,5 @@
 target remote localhost:1234
 b kernel_init
+b start_kernel
+b main
 continue

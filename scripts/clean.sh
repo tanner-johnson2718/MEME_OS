@@ -17,5 +17,15 @@ read -p 'Complete Buildroot Clean? (y/n): ' clean
 if [ "$clean" = "y" ]; then
     cd $BUILDROOT_DIR
     make clean
-    cd cd $BASE_DIR
+    rm -rf $BUILDROOT_CONFIG_DEST
+    rm -rf $BUILDROOT_PKG_TREE_DEST
+    cd user-apps
+    for d in * ; do
+        rm -rf "../${BUILDROOT_DIR}/package/${d}"
+    done
+    cd ../kernel-modules
+    for d in * ; do
+        rm -rf "../${BUILDROOT_DIR}/package/${d}"
+    done
+    cd ..
 fi

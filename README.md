@@ -44,6 +44,13 @@ BR2_TARGET_ROOTFS_EXT2_4=y
 
 Recommend to use `make menuconfig` to set these values as there are several sub params that will be automatically set if on uses the `menucofig`. The above values can be searched in the buildroot menuconfig. Once buildroot is configured to your liking, Save off `.config` and the `package/Config.in` files into the scripts directory. Save buildroot `.config` as `buildroot.config`.
 
+## Linux Menu Config
+
+* Kernel Hacking -> Kernel Debugging = y
+* Kernel Hacking -> Compile Time Checks .. -> Debug Info -> Rely on Tool CHains
+* Kernel Hacking -> Compile Time Checks .. -> Provide GDB scripts
+  * Documentation/dev-tools/gdb-kernel-debugging.rst  
+
 # Build, Execute, Clean, and Rebuild
 * `source ./scripts/env_init.sh`
   * The source script exports several important variables that will be used by other scripts
@@ -57,20 +64,20 @@ Recommend to use `make menuconfig` to set these values as there are several sub 
 * `./scripts/clean.sh`
   * This will cd into buildroot dir and simply call a project wide make clean
 * `./scripts/rebuild_linux.sh`
-  * 
+  * Deletes and rebuilts only the kernel.
 
 # Creating a User Space Application
 * See [hello](./user-apps/hello/) as an example of how to structure a user app to be built in
 * Keep all user apps flat in the user app dir i.e. no apps within an app. Unless you want to move it into buildroot system by hand
 * Use `./scipts/create_empty_app.sh` to create a blank template
 * Use `./scripts/rebuild_app.sh` to rebuilt the app and the rootfs with the updated app in it. 
-* User apps are placed in ???
+* User apps are placed in `/bin` within the final rootfs
 
 # Creating Kernel Modules
 * See [hellomod](./kernel-modules/hellomod/) as an example of how to structure a kernel module to be built in
 * Keep all kernel modules flat in the kernel modules dir i.e. no mods within a mod. Unless you want to move it into buildroot system by hand
 * Use `./scipts/create_empty_kmod.sh` to create a blank template
-* Use `./scripts/rebuild_app.sh` to rebuilt the module and the rootfs with the updated mod in it. (Same script as in user space app).
+* Use `./scripts/rebuild_kmod.sh` to rebuilt the module and the rootfs with the updated mod in it.
 * Kernel modules are placed in ?????
 
 # Directory Layout

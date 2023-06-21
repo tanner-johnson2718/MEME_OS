@@ -1,6 +1,6 @@
 all: *.c
-	$(CC) $(CFLAGS) -static -nostdlib  *.c -o test
+	$(CC) $(CFLAGS) -static -nostdlib  *.c -o syscall
 
 clean:
-	rm -f test
+	rm -f syscall
 	rm -f *.o

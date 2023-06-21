@@ -27,7 +27,7 @@ export BUILDROOT_PKG_TREE_DEST="${BUILDROOT_DIR}/package/Config.in"
 
 export KERNEL_IMG="${BUILDROOT_DIR}/output/images/bzImage"
 export ROOTFS="${BUILDROOT_DIR}/output/images/rootfs.ext2"
-export KERNEL_DEBUG_IMG="${BUILDROOT_DIR}/output/build/linux-custom/vmlinux"
+export KERNEL_DEBUG_IMG="${BUILDROOT_DIR}/output/build/linux-*/vmlinux"
 
 export GDB_CMD="scripts/gdb_cmds.txt"
 export ENV_INIT="true"
